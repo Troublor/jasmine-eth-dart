@@ -1,0 +1,13 @@
+{
+  "name": "jasmine-eth-dart",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "repository": "https://github.com/Troublor/jasmine-eth-ts.git",
+  "author": "Troublor",
+  "license": "Apache-2.0",
+  "scripts": {
+  },
+  "dependencies": {
+  }
+}

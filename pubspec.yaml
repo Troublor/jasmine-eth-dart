@@ -1,0 +1,8 @@
+name: jasmine_eth
+dependencies:
+  web3dart: ^1.2.3
+  web_socket_channel: ^1.0.0
+  test: ^1.15.4
+dev_dependencies:
+  build_runner: ^1.6.2
+  build_web_compilers: ^2.6.1

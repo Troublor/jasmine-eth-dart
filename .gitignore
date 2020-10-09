@@ -12,3 +12,5 @@ gen
 .buildlog
 
 .dart_tool
+.packages
+doc/api

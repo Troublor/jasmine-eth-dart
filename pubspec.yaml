@@ -1,4 +1,9 @@
 name: jasmine_eth
+version: 0.0.1
+description: Ethereum client SDK for Jasmine project
+homepage: https://github.com/Troublor/jasmine-eth-dart
+repository: https://github.com/Troublor/jasmine-eth-dart
+issue_tracker: https://github.com/Troublor/jasmine-eth-dart/issues
 dependencies:
   web3dart: ^1.2.3
   web_socket_channel: ^1.0.0

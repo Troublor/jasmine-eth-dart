@@ -8,3 +8,4 @@ Dart package name: `jasmine_eth`
 
 # Usage
 
+see [example](example/main.dart).

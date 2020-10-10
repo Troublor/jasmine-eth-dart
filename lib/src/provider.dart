@@ -23,8 +23,8 @@ mixin _provider {
       var receipt = await this.web3.getTransactionReceipt(transactionHash);
       if (receipt != null) {
         var waitForMoreBlocks = await checkReceipt(receipt);
-        if (!waitForMoreBlocks) {
-          subscribe.cancel();
+        if (!waitForMoreBlocks && !completer.isCompleted) {
+          await subscribe.cancel();
           completer.complete(receipt);
         }
       }
@@ -34,8 +34,8 @@ mixin _provider {
     var receipt = await this.web3.getTransactionReceipt(transactionHash);
     if (receipt != null) {
       var waitForMoreBlocks = await checkReceipt(receipt);
-      if (!waitForMoreBlocks) {
-        subscribe.cancel();
+      if (!waitForMoreBlocks && !completer.isCompleted) {
+        await subscribe.cancel();
         completer.complete(receipt);
       }
     }

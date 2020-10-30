@@ -29,6 +29,7 @@ class SDK with _provider {
 
   /// To construct a SDK object, it requires a ethereum endpoint
   SDK(String ethereumEndpoint) {
+    // TODO handle the error when endpoint url is incorrect
     this.web3 = new Web3Client(ethereumEndpoint, new Client());
     this._shared = new SharedSettings();
   }

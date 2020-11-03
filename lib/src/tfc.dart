@@ -33,4 +33,21 @@ class TFC with _provider {
         params: [address._ethereumAddress]);
     return balance.first;
   }
+
+  Future<void> transfer(
+      Address recipient, BigInt amount, Account sender) async {
+    var transferFunc = this._contract.function("transfer");
+    var txHash = await this.web3.sendTransaction(
+        sender._credentials,
+        Transaction.callContract(
+          contract: this._contract,
+          function: transferFunc,
+          parameters: [recipient._ethereumAddress, amount],
+          nonce: await this.web3.getTransactionCount(sender._address,
+              atBlock: BlockNum.pending()),
+        ),
+        fetchChainIdFromNetworkId: true);
+    // wait until the transaction is confirmed
+    await this.asyncTransaction(txHash, this._shared.confirmationNumber);
+  }
 }

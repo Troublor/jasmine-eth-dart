@@ -14,3 +14,5 @@ gen
 .dart_tool
 .packages
 doc/api
+
+doc/.DS_Store

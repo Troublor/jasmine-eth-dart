@@ -15,6 +15,9 @@ class MockEthereum {
     if (blockTime > 0) {
       ganacheOptions.add("--blockTime=$blockTime");
     }
+    ganacheOptions.add("--gasPrice=0x0");
+    ganacheOptions.add("--chainId=2020");
+    ganacheOptions.add("--networkId=2020");
     // add predefined accounts
     for (var key in _predefinedPrivateKeys) {
       ganacheOptions.add(

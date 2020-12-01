@@ -67,6 +67,31 @@ class SDK with _provider {
     }
   }
 
+  /// Only used in private test chain (Ganache)
+  /// Faucet 1 ETH from predefined accounts
+  Future<void> faucet(Address recipient) async {
+    var faucetAmount = BigInt.one.pow(18);
+    var chainID = await this.web3.getNetworkId();
+    if (chainID == 2020) {
+      // our own private testnet
+      var mockEth = new MockEthereum();
+      var predefinedAccounts = await mockEth.predefinedAccounts();
+      for (var predefinedAccount in predefinedAccounts) {
+        var balance = await this.balanceOf(predefinedAccount.address);
+        if (balance.compareTo(faucetAmount * BigInt.two) >= 0) {
+          // has at least 2 ETH
+          try {
+            await this.transfer(recipient, faucetAmount, predefinedAccount);
+            return;
+          } catch (ignored) {}
+        }
+      }
+      throw new Exception("Predefined accounts do not have enough balance to faucet");
+    }else{
+      throw new Exception("Faucet can only be used in our private testnet");
+    }
+  }
+
   /// Query the ETH balance of the input address.
   ///
   /// This method will return a future which completes a [BigInt] in unit wei.
@@ -128,22 +153,22 @@ class SDK with _provider {
     return Address._fromEthereumAddress(receipt.contractAddress);
   }
 
-  // Future<Address> deployTFC(Account deployer) async {
-  //   var gas = await this.web3.estimateGas(
-  //       sender: deployer._address,
-  //       to: null,
-  //       data: hexToBytes(TFC.bytecode));
-  //   var txHash = await this.web3.sendTransaction(
-  //       deployer._credentials,
-  //       Transaction(
-  //         to: null,
-  //         data: hexToBytes(TFC.bytecode),
-  //         maxGas: gas.toInt(),
-  //       ));
-  //   var receipt =
-  //       await this.asyncTransaction(txHash, this.confirmationRequirement);
-  //   return Address._fromEthereumAddress(receipt.contractAddress);
-  // }
+// Future<Address> deployTFC(Account deployer) async {
+//   var gas = await this.web3.estimateGas(
+//       sender: deployer._address,
+//       to: null,
+//       data: hexToBytes(TFC.bytecode));
+//   var txHash = await this.web3.sendTransaction(
+//       deployer._credentials,
+//       Transaction(
+//         to: null,
+//         data: hexToBytes(TFC.bytecode),
+//         maxGas: gas.toInt(),
+//       ));
+//   var receipt =
+//       await this.asyncTransaction(txHash, this.confirmationRequirement);
+//   return Address._fromEthereumAddress(receipt.contractAddress);
+// }
 }
 
 class SharedSettings {

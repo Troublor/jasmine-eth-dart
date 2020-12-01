@@ -74,6 +74,16 @@ void main() async {
           predefinedAccounts[1].address, BigInt.one, predefinedAccounts[0]);
       expect(future, completion(isA<void>()));
     });
+
+    test("should faucet work", () async {
+      var acc = await SDK.createAccount();
+      var balance0 = await sdk.balanceOf(acc.address);
+      expect(balance0, equals(BigInt.zero));
+      // faucet
+      await sdk.faucet(acc.address);
+      var balance1 = await sdk.balanceOf(acc.address);
+      expect(balance1, equals(BigInt.one));
+    });
   });
 
   group("manager", () {

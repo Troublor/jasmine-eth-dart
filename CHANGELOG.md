@@ -11,3 +11,7 @@ Add a usage example.
 # 0.0.3
 
 Support TFC ERC20 transfer.
+
+# 0.0.4
+
+Faucet ETH on our own private testnet

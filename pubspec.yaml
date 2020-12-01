@@ -1,5 +1,5 @@
 name: jasmine_eth
-version: 0.0.3
+version: 0.0.4
 description: Ethereum client SDK for Jasmine project. This SDK provides APIs to interact with Ethereum smart contracts of Jasmine Project.
 homepage: https://github.com/Troublor/jasmine-eth-dart
 repository: https://github.com/Troublor/jasmine-eth-dart

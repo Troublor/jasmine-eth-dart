@@ -16,3 +16,4 @@ gen
 doc/api
 
 doc/.DS_Store
+*.log

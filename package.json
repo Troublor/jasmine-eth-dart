@@ -4,8 +4,5 @@
   "repository": "https://github.com/Troublor/jasmine-eth-dart.git",
   "author": "Troublor",
   "license": "Apache-2.0",
-  "scripts": {
-  },
-  "dependencies": {
-  }
+  "scripts": {}
 }

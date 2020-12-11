@@ -15,3 +15,7 @@ Support TFC ERC20 transfer.
 # 0.0.4
 
 Faucet ETH on our own private testnet
+
+# 0.0.5 
+
+Version function in SDK

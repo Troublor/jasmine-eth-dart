@@ -23,6 +23,8 @@ part 'tfc.dart';
 
 part 'provider.dart';
 
+part 'version.dart';
+
 /// The SDK used to interact with TFC ERC20 token
 class SDK with _provider {
   SharedSettings _shared;
@@ -33,6 +35,8 @@ class SDK with _provider {
     this.web3 = new Web3Client(ethereumEndpoint, new Client());
     this._shared = new SharedSettings();
   }
+
+  get version => Version();
 
   /// Create a new Ethereum account.
   ///
@@ -86,8 +90,9 @@ class SDK with _provider {
           } catch (ignored) {}
         }
       }
-      throw new Exception("Predefined accounts do not have enough balance to faucet");
-    }else{
+      throw new Exception(
+          "Predefined accounts do not have enough balance to faucet");
+    } else {
       throw new Exception("Faucet can only be used in our private testnet");
     }
   }

@@ -28,6 +28,10 @@ void main() async {
       sdk = null;
     });
 
+    test("version", (){
+      print(sdk.version.versionStr);
+    });
+
     test("should deploy Manager correctly", () async {
       var managerAddr = await sdk.deployManager(predefinedAccounts[0]);
       var code =
